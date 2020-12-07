@@ -1,0 +1,39 @@
+<!-- <h2>{{ title }}</h2>
+<ul>
+  <li *ngFor="let course of courses">{{ course }}</li>
+</ul>-->
+
+<!-- property binding -->
+<!-- <img [src]="imageUrl" />   -->
+
+<!-- class binding -->
+<!-- <button class="btn btn-primary" [class.active]="isActive">Click</button> -->
+
+<!-- style binding -->
+<!-- <button
+  class="btn btn-primary ml-2"
+  [style.backgroundColor]="isActive ? 'green' : 'blue'"
+>
+  Click
+</button> -->
+
+<!-- event binding -->
+<!-- <div (click)="(divClicked)">
+  <button class="btn btn-primary ml-2" (click)="buttonClicked($event)">
+    Click
+  </button>
+</div> -->
+
+<!-- template variables -->
+<!-- <input #email (keyup.enter)="input(email)" /> -->
+
+<!-- Two-way binding -->
+<!-- <input [(ngModel)]="email" (keyup.enter)="keyUp()" /> -->
+
+<!-- Pipes -->
+<p>{{ course.title | uppercase }}</p>
+<p>{{ course.name | lowercase }}</p>
+<!-- <p>{{ course.number | number: 2.2 - 2 }}</p> -->
+<p>{{ course.amount | currency: "NGN":"symbol" }}</p>
+<p>{{ course.rating | percent }}</p>
+<p>{{ course.description | summary }}</p>
