@@ -1,0 +1,82 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+  <!-- <div *ngIf="form.errors" class="alert alert-danger">
+    The username or password is invalid.
+  </div> -->
+  <div formGroupName="account">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        formControlName="username"
+        id="username"
+        type="text"
+        class="form-control"
+      />
+      <div *ngIf="username.pending">Checking uniqueness of username...</div>
+      <div
+        *ngIf="username.touched && username.invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="username.errors.required">Username is required</div>
+        <div *ngIf="username.errors.minlength">
+          Username should be a minimum of
+          {{ username.errors.minlength.requiredLength }} characters
+        </div>
+        <div *ngIf="username.errors.maxlength">
+          Username should be a maximum of
+          {{ username.errors.maxlength.requiredLength }} characters
+        </div>
+        <div *ngIf="username.errors.cannotContainSpace">
+          Username cannot contain space
+        </div>
+        <div *ngIf="username.errors.shouldBeUnique">
+          Username is already taken
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        formControlName="password"
+        id="password"
+        type="password"
+        class="form-control"
+      />
+      <div
+        *ngIf="password.touched && password.invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="password.errors.required">Password is required</div>
+        <div *ngIf="password.errors.minlength">
+          Password should be a minimum of
+          {{ password.errors.minlength.requiredLength }} characters
+        </div>
+        <div *ngIf="password.errors.maxlength">
+          Password should be a maximum of
+          {{ password.errors.maxlength.requiredLength }} characters
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="topic">Topic</label>
+    <input
+      name="topic"
+      id="topic"
+      type="text"
+      class="form-control"
+      #topic
+      (keyup.enter)="addTopic(topic)"
+    />
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+
+<ul class="list-group">
+  <li
+    *ngFor="let topic of topics.controls"
+    class="list-group-item"
+    (click)="removeTopic(topic)"
+  >
+    {{ topic.value }}
+  </li>
+</ul>
