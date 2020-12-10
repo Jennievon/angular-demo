@@ -3,7 +3,11 @@
 <div *ngFor="let follower of followers" class="d-flex mb-4">
   <img class="avatar-img" [src]="follower.avatar_url" alt="Follower Avatar" />
   <div class="ml-2">
-    <p class="text-capitalize">{{ follower.login }}</p>
+    <p class="text-capitalize">
+      <a [routerLink]="['/followers', follower.id, follower.login]">{{
+        follower.login
+      }}</a>
+    </p>
     <p>
       <a href="follower.html_url  ">{{ follower.html_url }}</a>
     </p>
